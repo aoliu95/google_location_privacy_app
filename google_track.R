@@ -7,15 +7,14 @@ library(leaflet.extras)
 library(lubridate)
 
 
-ui <- dashboardPage(skin = "red",
+ui <- dashboardPage(skin = "blue",
                     title = "Google Location Map",
-                    dashboardHeader(title = "Google Location Map", titleWidth = 300),
+                    dashboardHeader(title = "Google Location History Visualization", titleWidth = 300),
                     
                     # interactive sidebar with menu and widgets
                     dashboardSidebar(width = 300,
-                                     
                                      tags$div(
-                                       tags$blockquote("Use this app to see where Google has tracked you!"),
+                                       tags$blockquote("Use this shiny app to check where Google has tracked you!"),
                                        tags$h4("How to get your Google location data:"),
                                        tags$p("Visit ", tags$a(href="https://takeout.google.com/", "Google Takeout")," to see and download any of the data Google holds on you."),
                                        tags$p("Click on SELECT NONE, then scroll down to Location History and click on the slider to select it."),
@@ -94,9 +93,10 @@ server <- function(input, output) {
                    locationdata <- fromJSON(fpath, simplifyVector = TRUE, simplifyDataFrame = TRUE)
                    
                    newIcons <- iconList(
-                     stand = makeIcon("https://sophosnews.files.wordpress.com/2014/04/streetview-icon-2501.png?w=250&h=250&crop=1",
-                                      "https://sophosnews.files.wordpress.com/2014/04/streetview-icon-2501.png?w=250&h=250&crop=1", 46, 46),
-                     drive = makeIcon("https://i0.wp.com/www.villa-tiha.com/car_icon.png", "https://i0.wp.com/www.villa-tiha.com/car_icon.png", 24, 24)
+                     stand = makeIcon("https://github.com/aoliu95/google_location_privacy_app/raw/master/stand.png",
+                                      "https://github.com/aoliu95/google_location_privacy_app/raw/master/stand.png", 46, 46),
+                     drive = makeIcon("https://github.com/aoliu95/google_location_privacy_app/raw/master/car.png", 
+                                      "https://github.com/aoliu95/google_location_privacy_app/raw/master/car.png", 24, 24)
                    )
                    
                    incProgress(1/4, detail = "cleaning data")
