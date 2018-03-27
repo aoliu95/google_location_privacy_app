@@ -1,0 +1,13 @@
+name: google_location_privacy_app
+title: google_location_privacy_app
+username:
+account: austin-liu
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 309246
+bundleId: 1289737
+url: https://austin-liu.shinyapps.io/google_location_privacy_app/
+when: 1522129706.04278
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: car.png|info.jpg|info.png|LICENSE|Loc1.png|README.md|stand.png

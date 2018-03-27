@@ -11,48 +11,49 @@ ui <- dashboardPage(skin = "blue",
                     title = "Google Location Map",
                     dashboardHeader(title = "Google Location History Visualization", titleWidth = 300),
                     
-                    # interactive sidebar with menu and widgets
+                    #idebar with menu and widgets
                     dashboardSidebar(width = 300,
                                      tags$div(
                                        tags$blockquote("Use this shiny app to check where Google has tracked you!"),
-                                       tags$h4(img(src='https://github.com/aoliu95/google_location_privacy_app/raw/master/info.png', height = "25px"),"How to get your Google location data:"),
+                                       tags$h4(img(src='https://github.com/aoliu95/google_location_privacy_app/raw/master/info.png', height = "25px"),
+                                               "How to get  Google location data:"),
                                        tags$p("It's your ",tags$strong("right")," to see how Internet Companies store your data.",
                                               "Simply heads to ", tags$a(href="https://takeout.google.com/", "Google Takeout")," to see and download any of the data Google holds on you."),
-                                       tags$p("Click on SELECT NONE, ",img(src='https://github.com/aoliu95/google_location_privacy_app/raw/master/NONE.png', height = "25px"),
-                                              "then scroll down to Location History",img(src='https://github.com/aoliu95/google_location_privacy_app/raw/master/Loc.png', height = "25px"),
+                                       tags$p("1.Click on",tags$b("SELECT NONE, "),img(src='https://github.com/aoliu95/google_location_privacy_app/raw/master/NONE.png', height = "30px"),
+                                              "then scroll down to",tags$b("Location History"),img(src='https://github.com/aoliu95/google_location_privacy_app/raw/master/Loc1.png', height = "35px"),
                                               "and click on the slider to select it."),
-                                       tags$p("Scroll to the bottom and click NEXT, then CREATE ARCHIVE, and finally DOWNLOAD when it is ready. You will need to verify by logging into your Google account."),
-                                       tags$p("This will download a ZIP file to your downloads directory."),
-                                       tags$p("Upload the ZIP file found in Takeout/Location History using the selector below..."),
+                                       tags$p("2.Scroll to the bottom and click NEXT, then CREATE ARCHIVE, and finally DOWNLOAD when it is ready. You will need to verify by logging into your Google account."),
+                                       tags$p("3.This will download a ZIP file to your downloads directory.Upload the downloaded ZIP file found below..."),
                                        style = "padding: 10px;"
                                        
                                      ),
                                      
-                                     tags$hr(),
-                                     
-                                     # Input: Select a file ----
-                                     fileInput("file1", "Upload Location History.json",
+                                     # Input: Select a file
+                                     fileInput("file1", "Upload your Zip file",
                                                multiple = FALSE,
                                                accept = ".zip",
                                                placeholder = "Max file size 100Mb"),
                                      
-                                     tags$hr(),
-                                     
                                      tags$div(
-                                       p("Once data is loaded, select a maptile of your preference and whether you want to see a heatmap, clustered point data, or both at the top right of the map. Point data is capped at the most recent 50,000 locations."),
-                                       tags$i("Your data will only be used for the purpose of rendering this visualisation and will not be stored permamently by this application!"),
+                                      # p("Point data is capped at the most recent 50,000 locations."),
+                                       tags$i("Privacy: We are not going to be another",tags$a(href="https://www.vox.com/policy-and-politics/2018/3/23/17151916/facebook-cambridge-analytica-trump-diagram",
+                                                                                                "Cambridge Analytica"),"! Your data would be uploaded to RShiny's cache. It will only be used for the purpose of 
+                                                                                                 rendering this visualisation. ANY FILE would be permently wiped once you closed this page.",
+                                                                                                  "You are also welcomed to audit the code at ", tags$a(href="https://github.com/aoliu95",
+                                                                                                  " A Light Data Lab Github Page")),
                                        style = "padding: 10px;"
                                      ),
                                      
-                                     # CoI credit tag
-                                     div(style = "padding: 10px;",
-                                         helpText("Powered by", a("Culture of Insight", 
-                                                                  href = "https://cultureofinsight.com", 
-                                                                  target = "_blank")))
+                                     # credit tag
+                                     h5("  Made with ❤️ from",
+                                        img(src = "https://github.com/aoliu95/airport_shiny/raw/master/black.png", height = "50px"),
+                                        br(),
+                                        "  Powered By",
+                                        img(src = "https://github.com/aoliu95/airport_shiny/raw/master/shinyLogo.png", height = "30px"))
                                      
                     ),
                     
-                    # Main panel for displaying outputs ----
+                    # Main panel for displaying outputs
                     dashboardBody(
                       
                       tags$head(tags$style("#myMap{height:90vh !important;}")),
@@ -62,7 +63,7 @@ ui <- dashboardPage(skin = "blue",
                     )
 )
 
-# Define server logic to read selected file ----
+# Define server logic to read selected file
 server <- function(input, output) {
   
   options(shiny.maxRequestSize = 100*1024^2)
@@ -136,5 +137,5 @@ server <- function(input, output) {
   
 }
 
-# Create Shiny app ----
+# Create Shiny app
 shinyApp(ui, server)
