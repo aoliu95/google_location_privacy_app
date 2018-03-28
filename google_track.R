@@ -17,13 +17,13 @@ ui <- dashboardPage(skin = "blue",
                                        tags$blockquote("Use this shiny app to check where Google has tracked you!"),
                                        tags$h4(img(src='https://github.com/aoliu95/google_location_privacy_app/raw/master/info.png', height = "25px"),
                                                "How to get  Google location data:"),
-                                       tags$p("It's your ",tags$strong("right")," to see how Internet Companies store your data.",
-                                              "Simply heads to ", tags$a(href="https://takeout.google.com/", "Google Takeout")," to see and download any of the data Google holds on you."),
-                                       tags$p("1.Click on",tags$b("SELECT NONE, "),img(src='https://github.com/aoliu95/google_location_privacy_app/raw/master/NONE.png', height = "30px"),
+                                       #tags$p("It's your ",tags$strong("right")," to see how Internet Companies store your data."),
+                                       tags$p("1.Simply heads to ", tags$a(href="https://takeout.google.com/", "Google Takeout")," to see and download any of the data Google holds on you."),
+                                       tags$p("2.Click on",tags$b("SELECT NONE, "),img(src='https://github.com/aoliu95/google_location_privacy_app/raw/master/NONE.png', height = "30px"),
                                               "then scroll down to",tags$b("Location History"),img(src='https://github.com/aoliu95/google_location_privacy_app/raw/master/Loc1.png', height = "35px"),
                                               "and click on the slider to select it."),
-                                       tags$p("2.Scroll to the bottom and click NEXT, then CREATE ARCHIVE, and finally DOWNLOAD when it is ready. You will need to verify by logging into your Google account."),
-                                       tags$p("3.This will download a ZIP file to your downloads directory.Upload the downloaded ZIP file found below..."),
+                                       tags$p("3.Scroll to the bottom and click NEXT, then CREATE ARCHIVE, and finally DOWNLOAD when it is ready. You will need to verify by logging into your Google account."),
+                                       tags$p("4.This will download a ZIP file to your downloads directory.Upload the downloaded ZIP file found below..."),
                                        style = "padding: 10px;"
                                        
                                      ),
@@ -46,10 +46,7 @@ ui <- dashboardPage(skin = "blue",
                                      
                                      # credit tag
                                      h5("  Made with ❤️ from",
-                                        img(src = "https://github.com/aoliu95/airport_shiny/raw/master/black.png", height = "50px"),
-                                        br(),
-                                        "  Powered By",
-                                        img(src = "https://github.com/aoliu95/airport_shiny/raw/master/shinyLogo.png", height = "30px"))
+                                        img(src = "https://github.com/aoliu95/airport_shiny/raw/master/black.png", height = "50px"))
                                      
                     ),
                     
